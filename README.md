@@ -8,4 +8,4 @@ Net worth calculator built using React and RESTful api.
 
 - Guides: react guides
 - Design inspiration: 
-- APIs: react strap, react sass
+- APIs: react strap, react sass, taucharts
