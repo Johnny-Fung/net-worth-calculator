@@ -22,24 +22,23 @@ import "assets/scss/black-dashboard-react.scss";
 import "assets/css/nucleo-icons.css";
 
 // react plugin used to create charts
-import {Bar} from "react-chartjs-2";
+import {HorizontalBar, Bar} from "react-chartjs-2";
 
 // reactstrap components
 import {
   Card,
-  CardGroup,
   CardHeader,
   CardBody,
   CardTitle,
-  CardImg,
-  CardSubtitle,
-  CardText,
   Table,
   Row,
   Col,
   Input,
   InputGroup,
-  InputGroupAddon
+  InputGroupAddon,
+  Navbar,
+  Nav,
+  NavItem
 } from "reactstrap";
 
 // core components
@@ -50,27 +49,44 @@ import {
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      collapseOpen: false,
+      modalSearch: false,
+      color: "navbar-transparent"
+    };
   }
   render() {
     return (
       <>
+
+      <Navbar expand="lg">
+        <Nav className="ml-auto">
+          <NavItem class="text-center"></NavItem>
+          <NavItem class="text-center">Net Worth Calculator</NavItem>
+        </Nav>
+      </Navbar>
+        
+    
+
         <div className="content">
 
 
           <Row>
             <Col xs="12">
               <Card className="card-chart">
-                  <CardHeader>
-                    <Row>
-                      <Col className="text-left" sm="6">
-                        <h5 className="card-category">Total Shipments</h5>
-                        <CardTitle tag="h2">Performance</CardTitle>
-                      </Col>
-                    </Row>
-                  </CardHeader>
                   <CardBody>
+                    <CardHeader>
+                      <Row md="2">
+                        <Col className="text-left" sm="6">
+                          <CardTitle tag="h2">Assets</CardTitle>
+                        </Col>
+                        <Col className="text-right" sm="6">
+                          <CardTitle tag="h2">Liabilities</CardTitle>
+                        </Col>
+                      </Row>
+                    </CardHeader>
                     <div className="chart-area">
-                      <Bar
+                      <HorizontalBar
                         data={chartExample3.data}
                         options={chartExample3.options}
                       />
@@ -84,51 +100,77 @@ class Dashboard extends React.Component {
           
           <Row md="3">
             <Col md="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Total Shipments</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-bell-55 text-info" />{" "}
-                    763,215
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Bar
-                      data={chartExample3.data}
-                      options={chartExample3.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-
-
-            <Col md="4">
               <Card>
                 <CardBody>
-                  <CardTitle tag="h2">Net Worth</CardTitle>
-                  <img
-                  alt="..."
-                  // className="avatar"
-                  src={require("assets/img/money-bag.png")}
-                  />
-                  <CardTitle tag="h2">$1,234,567</CardTitle>
+                  <Row md="2">
+                    <Col className="text-center" sm="6">
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <CardTitle tag="h1">Total</CardTitle>
+                      <CardTitle tag="h1">Assets</CardTitle>
+                    </Col>
+                    <Col>
+                      <img
+                      alt="..."
+                      // className="avatar"
+                      src={require("assets/img/green-arrow.png")}
+                      />
+                    </Col>
+                  </Row>
                 </CardBody>
+                <CardTitle className="text-center" tag="h1">$1,234,567</CardTitle>
               </Card>
             </Col>
 
             <Col md="4">
               <Card>
                 <CardBody>
-                  <CardTitle tag="h3" className="text-info">Total Liabilities</CardTitle>
-                  <img
-                  alt="..."
-                  // className="avatar"
-                  src={require("assets/img/red-arrow.png")}
-                  />
-                  <CardTitle tag="h3" className="text-info">$1,234,567</CardTitle>
+                  <Row md="2">
+                    <Col className="text-center" sm="6">
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <CardTitle tag="h1">Net</CardTitle>
+                      <CardTitle tag="h1">Worth</CardTitle>
+                    </Col>
+                    <Col>
+                      <img
+                      alt="..."
+                      // className="avatar"
+                      src={require("assets/img/money-bag.png")}
+                      />
+                    </Col>
+                  </Row>
                 </CardBody>
+                <CardTitle className="text-center" tag="h1">$1,234,567</CardTitle>
+              </Card>
+            </Col>
+
+            <Col md="4">
+              <Card>
+                <CardBody>
+                  <Row md="2">
+                    <Col className="text-center" sm="6">
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <Row><CardTitle tag="h1"></CardTitle></Row>
+                      <CardTitle tag="h1">Total</CardTitle>
+                      <CardTitle tag="h1">Liabilities</CardTitle>
+                    </Col>
+                    <Col>
+                      <img
+                      alt="..."
+                      // className="avatar"
+                      src={require("assets/img/red-arrow.png")}
+                      />
+                    </Col>
+                  </Row>
+                </CardBody>
+                <CardTitle className="text-center" tag="h1">$1,234,567</CardTitle>
               </Card>
             </Col>
 

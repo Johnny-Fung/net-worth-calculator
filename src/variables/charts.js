@@ -25,26 +25,49 @@
 let chartExample3 = {
   data: canvas => {
     let ctx = canvas.getContext("2d");
-
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
-    gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
-    gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
-
     return {
-      labels: ["USA", "GER", "AUS", "UK", "RO", "BR"],
       datasets: [
         {
-          label: "Countries",
-          fill: true,
-          backgroundColor: gradientStroke,
-          hoverBackgroundColor: gradientStroke,
-          borderColor: "#d048b6",
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45]
+          label: 'Cash',
+          data: [10],
+          backgroundColor: '#C4D156',
+          borderColor: "#ffffff",
+          borderWidth: 1.5
+        },
+        {
+          label: 'Investments',
+          data: [25],
+          backgroundColor: '#68A03F',
+          borderColor: "#ffffff",
+          borderWidth: 1.5
+        },
+        {
+          label: 'Long Term Assets',
+          data: [55],
+          backgroundColor: '#2F9138',
+          borderColor: "#ffffff",
+          borderWidth: 1.5
+        },
+        {
+          label: '',
+          data: [0.8],
+          backgroundColor: '#ffffff',
+          borderColor: "#ffffff",
+          borderWidth: 1.5
+        },
+        {
+          label: 'Long Term Debt',
+          data: [30],
+          backgroundColor: '#940D22',
+          borderColor: "#ffffff",
+          borderWidth: 1.5
+        },
+        {
+          label: 'Short Term Liabilities',
+          data: [15],
+          backgroundColor: '#D1692E',
+          borderColor: "#ffffff",
+          borderWidth: 1.5
         }
       ]
     };
@@ -62,37 +85,24 @@ let chartExample3 = {
       xPadding: 12,
       mode: "nearest",
       intersect: 0,
-      position: "nearest"
+      position: "nearest",
+      titleFontFamily: "'Poppins', sans-serif",
+      callbacks: {
+        title: () => "Proportions in %:",
+      }, //turn off title in tooltips
+      bodyFontFamily: "'Poppins', sans-serif"
     },
     responsive: true,
     scales: {
       yAxes: [
-        {
-          gridLines: {
-            drawBorder: false,
-            color: "rgba(225,78,202,0.1)",
-            zeroLineColor: "transparent"
-          },
-          ticks: {
-            suggestedMin: 60,
-            suggestedMax: 120,
-            padding: 20,
-            fontColor: "#9e9e9e"
-          }
-        }
+        {stacked: true},
       ],
       xAxes: [
-        {
-          gridLines: {
-            drawBorder: false,
-            color: "rgba(225,78,202,0.1)",
-            zeroLineColor: "transparent"
-          },
-          ticks: {
-            padding: 20,
-            fontColor: "#9e9e9e"
-          }
+        {stacked: true},
+        {gridLines: {
+          display:false
         }
+      },
       ]
     }
   }
