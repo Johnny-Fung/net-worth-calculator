@@ -17,12 +17,15 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
+import classnames from "classnames";
 
-import "assets/scss/black-dashboard-react.scss";
-import "assets/css/nucleo-icons.css";
+// Styles
+import "assets/css/black-dashboard-react.css";
 
 // react plugin used to create charts
-import {HorizontalBar, Bar} from "react-chartjs-2";
+import {HorizontalBar} from "react-chartjs-2";
+// Chart data and options setup
+import {stackedChart} from "variables/charts.js";
 
 // reactstrap components
 import {
@@ -36,15 +39,11 @@ import {
   Input,
   InputGroup,
   InputGroupAddon,
+  InputGroupText,
   Navbar,
-  Nav,
-  NavItem
+  Nav
 } from "reactstrap";
 
-// core components
-import {
-  chartExample3
-} from "variables/charts.js";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -60,9 +59,8 @@ class Dashboard extends React.Component {
       <>
 
       <Navbar expand="lg">
-        <Nav className="ml-auto">
-          <NavItem class="text-center"></NavItem>
-          <NavItem class="text-center">Net Worth Calculator</NavItem>
+        <Nav>
+          <h2 class="title-properties">Net Worth Calculator</h2>
         </Nav>
       </Navbar>
         
@@ -87,8 +85,8 @@ class Dashboard extends React.Component {
                     </CardHeader>
                     <div className="chart-area">
                       <HorizontalBar
-                        data={chartExample3.data}
-                        options={chartExample3.options}
+                        data={stackedChart.data}
+                        options={stackedChart.options}
                       />
                     </div>
                   </CardBody>
@@ -96,7 +94,7 @@ class Dashboard extends React.Component {
             </Col>
           </Row>
           
-          
+
           
           <Row md="3">
             <Col md="4">
@@ -114,7 +112,6 @@ class Dashboard extends React.Component {
                     <Col>
                       <img
                       alt="..."
-                      // className="avatar"
                       src={require("assets/img/green-arrow.png")}
                       />
                     </Col>
@@ -139,7 +136,6 @@ class Dashboard extends React.Component {
                     <Col>
                       <img
                       alt="..."
-                      // className="avatar"
                       src={require("assets/img/money-bag.png")}
                       />
                     </Col>
@@ -164,7 +160,6 @@ class Dashboard extends React.Component {
                     <Col>
                       <img
                       alt="..."
-                      // className="avatar"
                       src={require("assets/img/red-arrow.png")}
                       />
                     </Col>
@@ -176,8 +171,7 @@ class Dashboard extends React.Component {
 
           </Row>
           
-          
-          
+
           
           <Row>
             {/* Assets Table */}
@@ -198,18 +192,23 @@ class Dashboard extends React.Component {
                       <tr>
                         <td>Chequing</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center tr-padding" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"cash1": this.state.focus})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="100" onFocus={e => this.setState({ focus: true })} onBlur={e => this.setState({ focus: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Savings for Taxes</td>
-                        <td><InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="100" onFocus={e => this.setState({ focus: true })} onBlur={e => this.setState({ focus: false })}/>
+                          </InputGroup>
                         </td>
                       </tr>
                       <tr>
@@ -485,7 +484,6 @@ class Dashboard extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-
 
 
 

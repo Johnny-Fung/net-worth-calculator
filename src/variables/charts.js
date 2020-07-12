@@ -22,38 +22,40 @@
 // #########################################
 // // // used inside src/views/Dashboard.js
 // #########################################
-let chartExample3 = {
+
+// require ('./RoundedBars.js')
+
+let stackedChart = {
   data: canvas => {
-    let ctx = canvas.getContext("2d");
     return {
       datasets: [
         {
           label: 'Cash',
-          data: [10],
+          data: [-10],
           backgroundColor: '#C4D156',
           borderColor: "#ffffff",
           borderWidth: 1.5
         },
         {
           label: 'Investments',
-          data: [25],
+          data: [-25],
           backgroundColor: '#68A03F',
           borderColor: "#ffffff",
           borderWidth: 1.5
         },
         {
           label: 'Long Term Assets',
-          data: [55],
+          data: [-55],
           backgroundColor: '#2F9138',
           borderColor: "#ffffff",
           borderWidth: 1.5
         },
         {
-          label: '',
-          data: [0.8],
+          label: 'Separator',
+          data: [1.4],
           backgroundColor: '#ffffff',
           borderColor: "#ffffff",
-          borderWidth: 1.5
+          borderWidth: 0
         },
         {
           label: 'Long Term Debt',
@@ -75,32 +77,35 @@ let chartExample3 = {
   options: {
     maintainAspectRatio: false,
     legend: {
-      display: false
+      display: true,
+      position: "bottom",
+      labels: {
+        usePointStyle: true,
+        fontSize: 13,
+        padding: 20,
+        borderWidth: 0,
+        filter: function(legendItem, chartData) {
+          if (legendItem.datasetIndex === 3) {
+            return false;
+          }
+         return true;
+         }
+      }
     },
-    tooltips: {
-      backgroundColor: "#f5f5f5",
-      titleFontColor: "#333",
-      bodyFontColor: "#666",
-      bodySpacing: 4,
-      xPadding: 12,
-      mode: "nearest",
-      intersect: 0,
-      position: "nearest",
-      titleFontFamily: "'Poppins', sans-serif",
-      callbacks: {
-        title: () => "Proportions in %:",
-      }, //turn off title in tooltips
-      bodyFontFamily: "'Poppins', sans-serif"
-    },
+    tooltips: {enabled: false},
+    hover: {mode: null},
     responsive: true,
     scales: {
       yAxes: [
         {stacked: true},
       ],
-      xAxes: [
-        {stacked: true},
-        {gridLines: {
+      xAxes: [{
+        stacked: true,
+        gridLines: {
           display:false
+          },
+        ticks: {
+             display: false //this will remove the label/text
         }
       },
       ]
@@ -108,6 +113,8 @@ let chartExample3 = {
   }
 };
 
+
 module.exports = {
-  chartExample3  // in src/views/Dashboard.js
+  stackedChart  // in src/index.js
 };
+
