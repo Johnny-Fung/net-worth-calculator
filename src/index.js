@@ -1,26 +1,16 @@
 /*!
 
 =========================================================
-* Black Dashboard React v1.1.0
+*                 Net Worth Calculator
 =========================================================
-
-* Product Page: https://www.creative-tim.com/product/black-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/black-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
 import React from "react";
 import ReactDOM from "react-dom";
 import classnames from "classnames";
 
-// Styles
-import "assets/css/black-dashboard-react.css";
+// Styles based on the reactstrap library
+import "assets/css/net-worth-calculator.css";
 
 // react plugin used to create charts
 import {HorizontalBar} from "react-chartjs-2";
@@ -36,7 +26,6 @@ import {
   Table,
   Row,
   Col,
-  Input,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
@@ -44,6 +33,8 @@ import {
   Nav
 } from "reactstrap";
 
+//Currency input format
+import NumberFormat from 'react-number-format';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -53,7 +44,7 @@ class Dashboard extends React.Component {
       modalSearch: false,
       color: "navbar-transparent"
     };
-  }
+  }  
   render() {
     return (
       <>
@@ -185,67 +176,81 @@ class Dashboard extends React.Component {
                     <thead className="text-primary">
                       <tr>
                         <th>Cash and Savings</th>
-                        <th className="text-center">Amount</th>
+                        <th className="text-center">&emsp;&emsp;Amount</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <td>Chequing</td>
                         <td>
-                          <InputGroup className={classnames({"cash1": this.state.focus})}>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus1})}>
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>$</InputGroupText>
                             </InputGroupAddon>
-                            <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="100" onFocus={e => this.setState({ focus: true })} onBlur={e => this.setState({ focus: false })}/>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus1: true })} onBlur={e => this.setState({ focus1: false })}/>
                           </InputGroup>
                         </td>
                       </tr>
                       <tr>
                         <td>Savings for Taxes</td>
                         <td>
-                          <InputGroup className={classnames({"input-group-focus": this.state.focus})}>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus2})}>
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>$</InputGroupText>
                             </InputGroupAddon>
-                            <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="100" onFocus={e => this.setState({ focus: true })} onBlur={e => this.setState({ focus: false })}/>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus2: true })} onBlur={e => this.setState({ focus2: false })}/>
                           </InputGroup>
                         </td>
                       </tr>
                       <tr>
                         <td>Rainy Day Fund</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus3})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus3: true })} onBlur={e => this.setState({ focus3: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Savings for Fun</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus4})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                              </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus4: true })} onBlur={e => this.setState({ focus4: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Savings for Travel</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus5})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                              </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus5: true })} onBlur={e => this.setState({ focus5: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Savings for Personal Development</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus6})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                              </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus6: true })} onBlur={e => this.setState({ focus6: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                     </tbody>
                     <thead className="text-primary">
@@ -258,38 +263,50 @@ class Dashboard extends React.Component {
                       <tr>
                         <td>Investment 1</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus7})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus7: true })} onBlur={e => this.setState({ focus7: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Investment 2</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus8})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus8: true })} onBlur={e => this.setState({ focus8: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Investment 3</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus9})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus9: true })} onBlur={e => this.setState({ focus9: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Investment 4</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus10})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus10: true })} onBlur={e => this.setState({ focus10: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                     </tbody>
                     <thead className="text-primary">
@@ -302,29 +319,38 @@ class Dashboard extends React.Component {
                       <tr>
                         <td>Primary Home</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus11})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus11: true })} onBlur={e => this.setState({ focus11: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Secondary Home</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus12})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus12: true })} onBlur={e => this.setState({ focus12: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Other</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus13})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus13: true })} onBlur={e => this.setState({ focus13: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                     </tbody>
                   </Table>
@@ -342,142 +368,126 @@ class Dashboard extends React.Component {
                   <Table className="tablesorter" responsive>
                     <thead className="text-primary">
                       <tr>
-                        <th>Cash and Savings</th>
-                        <th className="text-center">Amount</th>
+                        <th>Short Term Liabilities</th>
+                        <th className="text-center">&emsp;&emsp;Amount</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Chequing</td>
+                        <td>Credit Card 1</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center tr-padding" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Savings for Taxes</td>
-                        <td><InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus14})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus14: true })} onBlur={e => this.setState({ focus14: false })}/>
+                          </InputGroup>
                         </td>
                       </tr>
                       <tr>
-                        <td>Rainy Day Fund</td>
+                        <td>Credit Card 2</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Savings for Fun</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Savings for Travel</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Savings for Personal Development</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                    </tbody>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Investments</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Investment 1</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Investment 2</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Investment 3</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Investment 4</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                    </tbody>
-                    <thead className="text-primary">
-                      <tr>
-                        <th>Long Term Assets</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Primary Home</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
-                      </tr>
-                      <tr>
-                        <td>Secondary Home</td>
-                        <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus15})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus15: true })} onBlur={e => this.setState({ focus15: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                       <tr>
                         <td>Other</td>
                         <td>
-                        <InputGroup>
-                          <InputGroupAddon addonType="prepend">$</InputGroupAddon>
-                          <Input className="text-center" placeholder="0" min={0} max={9999999} type="number" step="10" />
-                        </InputGroup>
-                      </td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus16})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus16: true })} onBlur={e => this.setState({ focus16: false })}/>
+                          </InputGroup>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <thead className="text-primary">
+                      <tr>
+                        <th>Long Term Debt</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Mortgage 1</td>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus17})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus17: true })} onBlur={e => this.setState({ focus17: false })}/>
+                          </InputGroup>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Mortgage 2</td>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus18})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus18: true })} onBlur={e => this.setState({ focus18: false })}/>
+                          </InputGroup>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Line of Credit</td>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus19})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus19: true })} onBlur={e => this.setState({ focus19: false })}/>
+                          </InputGroup>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Investment Loan</td>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus20})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus20: true })} onBlur={e => this.setState({ focus20: false })}/>
+                          </InputGroup>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Student Loan</td>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus21})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus21: true })} onBlur={e => this.setState({ focus21: false })}/>
+                          </InputGroup>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Car Loan</td>
+                        <td>
+                          <InputGroup className={classnames({"input-group-focus": this.state.focus22})}>
+                            <InputGroupAddon addonType="prepend">
+                              <InputGroupText>$</InputGroupText>
+                            </InputGroupAddon>
+                            <NumberFormat className="text-center form-control" thousandSeparator={true} placeholder="0" min={0} max={9999999} 
+                                decimalScale="2" allowNegative="false" type="tel" onFocus={e => this.setState({ focus22: true })} onBlur={e => this.setState({ focus22: false })}/>
+                          </InputGroup>
+                        </td>
                       </tr>
                     </tbody>
                   </Table>
