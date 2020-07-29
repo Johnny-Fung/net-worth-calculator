@@ -1,11 +1,6 @@
 # net-worth-calculator
-Net worth calculator built using React and RESTful api.
+Net worth calculator with front end using React and backend using Java with Spring Boot framework for rest APIs.
 
 
 ## Credits and Resources Used:
-- Template: https://www.creative-tim.com/product/paper-dashboard
-
-
-- Guides: react guides
-- Design inspiration: 
-- APIs: react strap, react sass, react-chartjs-2, react-number-format
+- React Template: https://www.creative-tim.com/product/paper-dashboard
