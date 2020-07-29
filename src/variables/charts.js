@@ -1,15 +1,14 @@
 // #########################################
-// // // NWC Charts used inside /index.js
+// // // Net Worth Calculator Charts used inside /index.js
 // #########################################
 
-// require ('./RoundedBars.js')
 
 let stackedChart = {
   data: canvas => {
     return {
       datasets: [
         {
-          label: ' Cash',
+          label: ' Cash and Savings',
           data: [-10],
           backgroundColor: '#C4D156',
           borderColor: "#ffffff",
@@ -84,7 +83,7 @@ let stackedChart = {
           display:false
           },
         ticks: {
-             display: false //this will remove the label/text
+             display: false
         }
       },
       ]

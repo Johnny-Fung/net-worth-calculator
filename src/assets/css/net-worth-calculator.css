@@ -140,6 +140,9 @@ h1, h2, h3, h4, h5, h6,
 h1, .h1 {
   font-size: 2.0625rem; }
 
+.h1-small {
+    font-size: 1.625rem; }
+
 h2, .h2 {
   font-size: 1.6875rem; }
 
@@ -899,14 +902,14 @@ select.form-control:focus::-ms-value, select.numberformat:focus::-ms-value {
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out; }
   .form-control:focus, .numberformat:focus {
     /* placeholders */
-    border-color: #e14eca;
+    border-color: rgb(48,119,191);
     background-color: transparent;
     box-shadow: none; }
     .form-control:focus + .input-group-append .input-group-text,
     .form-control:focus ~ .input-group-append .input-group-text,
     .form-control:focus + .input-group-prepend .input-group-text,
     .form-control:focus ~ .input-group-prepend .input-group-text  {
-      border: 1px solid #e14eca;
+      border: 1px solid rgb(48,119,191);
       border-left: none;
       background-color: transparent; }
   .form-control + .form-control-feedback {
@@ -973,7 +976,7 @@ a {
   color: #ba54f5;
   font-weight: 300; }
   a:hover, a:focus {
-    color: #e14eca; }
+    color: rgb(48,119,191); }
 
 h1, .h1 {
   line-height: 1.05;
@@ -1326,9 +1329,9 @@ hr {
 .input-group-focus .input-group-prepend .input-group-text,
 .input-group-focus .input-group-append .input-group-text {
   background-color: #ffffff;
-  border-color: #e14eca;
+  border-color: rgb(48,119,191);
   background-color: transparent;
-  border-color: #e14eca; }
+  border-color: rgb(48,119,191); }
   /* placeholders */
 
 .input-group-focus.no-border .input-group-prepend .input-group-text,
@@ -1458,7 +1461,7 @@ hr {
       color: #222a42;
       border-color: rgba(29, 37, 59, 0.2); }
       .card.card-white .form-control:focus .numberformat:focus {
-        border-color: #e14eca; }
+        border-color: rgb(48,119,191); }
     .card.card-white label:not(.btn) {
       color: #344675; }
     .card.card-white .form-group.no-border .form-control,
@@ -1517,7 +1520,7 @@ hr {
     .card.card-white .input-group-focus .form-control,
     .card.card-white .input-group-focus .numberformat {
       background-color: #ffffff;
-      border-color: #e14eca; }
+      border-color: rgb(48,119,191); }
     .card.card-white .input-group-focus.no-border .input-group-prepend .input-group-text,
     .card.card-white .input-group-focus.no-border .input-group-append .input-group-text {
       background-color: rgba(222, 222, 222, 0.5); }
@@ -1596,3 +1599,4 @@ hr {
     margin-bottom: 10px; }
     .card-chart.card-chart-pie .card-title i {
       font-size: 1rem; }
+  
